@@ -1,3 +1,4 @@
+
 body {
   width: 1300px;
   height: 800px
@@ -20,4 +21,16 @@ body {
   width: 100px;
   height: 200px;
   background-color: rgb(133, 133, 133)
+}
+
+section.table-cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section.player-cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
