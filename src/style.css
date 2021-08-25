@@ -1,0 +1,23 @@
+body {
+  width: 1300px;
+  height: 800px
+}
+.card-table {
+  display: flex;
+  width: 500px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.dealer-div {
+  height: 400px;
+  display: flex;
+}
+
+.card {
+  margin: 1%;
+  display: flex;
+  width: 100px;
+  height: 200px;
+  background-color: rgb(133, 133, 133)
+}

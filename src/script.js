@@ -7,4 +7,14 @@ console.log(deckid);
 }
 window.onload =() => {
 deckDraw();
+flipCard();
 }
+
+const flipCard = () => {
+  const getCard = document.getElementById('player-card');
+  getCard.addEventListener('click', (event) => {
+    event.target.style.backgroundColor = ('rgb(238, 70, 70)');
+    
+  })
+}
+
