@@ -16,7 +16,7 @@ section.table-cards {
 }
 
 #player {
-  width: 300px;
+  width: 700px;
   height: 300px;
   margin: 0 auto;
   border-radius: 40px;
@@ -30,5 +30,38 @@ section.table-cards {
 section.player-cards {
   margin: 0 auto;
   position: relative;
-  width: 300px
+  width: 600px
+}
+
+container {
+  display: flex;
+  position: relative;
+  left: 50px;
+}
+
+.table-cards section:nth-child(1), .player-cards section:nth-child(1) {
+  position: absolute;
+  left: 0px;
+}
+
+.table-cards section:nth-child(2), .player-cards section:nth-child(2) {
+  position: absolute;
+  left: 50px;
+}
+
+.table-cards section:nth-child(3), .player-cards section:nth-child(3) {
+  position: absolute;
+  left: 100px;
+}
+.table-cards section:nth-child(4), .player-cards section:nth-child(4) {
+  position: absolute;
+  left: 150px;
+}
+.table-cards  section:nth-child(5),.player-cards section:nth-child(5) {
+  position: absolute;
+  left: 200px;
+}
+.table-cards  section:nth-child(6), .player-cards section:nth-child(6) {
+  position: absolute;
+  left: 250px;
 }
