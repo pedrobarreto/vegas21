@@ -2,7 +2,10 @@ const tableCards = document.querySelector('.table-cards');
 const playerCards = document.querySelector('.player-cards');
 const startBtn = document.getElementById('start');
 const hitBtn = document.getElementById('hit');
+const stdBtn = document.getElementById('stand');
 let idDeck;
+let tableScore = 0;
+let playerScore = 0;
 
 const deckDraw = async () => {
   const fetchDeck = await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6')
@@ -12,21 +15,12 @@ const deckDraw = async () => {
 
   const t = await table(1);
   const p = await player(2);
+  
+ tableScore = score(tableCards);
+ playerScore = score(playerCards);
 }
 
-<<<<<<< HEAD
-const flipCard = () => {
-  const getCard = document.getElementById('player-card');
-  getCard.addEventListener('click', (event) => {
-    event.target.style.backgroundColor = ('rgb(238, 70, 70)');
-    
-  })
-}
-
-const deckGet = async (deckid, count) => { 
-=======
 const deckGet = async (deckid, count) => {
->>>>>>> 1b51032292129c4c3ae6397498e49b978fee4a64
   const fetchDeck = await fetch(`https://deckofcardsapi.com/api/deck/${deckid}/draw/?count=${count}`)
   const deck = await fetchDeck.json();
   return deck.cards.map(({
@@ -34,14 +28,14 @@ const deckGet = async (deckid, count) => {
     image,
     suit,
     value
-  }, i) => {
+  }) => {
 
     return createCards({
       code,
       image,
       suit,
       value,
-      i
+      
     });
   })
 }
@@ -90,19 +84,60 @@ function createCustomElement(element, className) {
   return e;
 }
 
-<<<<<<< HEAD
-  window.onload = async () => {
- g = await deckDraw();
-    await table()
-    await player()
-  }
-=======
-const cardDrawPlayer = () => {
-  player(1);
+const cardDrawPlayer = async () => {
+  await player(1);
+  playerScore = score(playerCards);
 }
 
+const score = (quem) => {
+ return Array.from(quem.children).reduce((acc, valor) => {
+  let somar = 0;
+  if (valor.firstChild.className === "JACK" || valor.firstChild.className === "QUEEN" 
+  || valor.firstChild.className === "KING") {
+    somar = 10;
+  } else if (valor.firstChild.className === 'ACE') {
+    somar = 11;
+  } else somar = parseInt(valor.firstChild.className);
+  acc += somar;
+  return acc;
+  }, 0);
+}
+
+const tableLogic = async () => {
+   for(let i = 0; i < 5; i += 1) {
+    if (playerScore >= tableScore && tableCards.children.length < 5){ //precisa de uma condicional pra player stand;
+      await table(1);
+      console.log(playerScore);
+      tableScore = score(tableCards);
+    };
+    
+  }
+  if(playerScore > tableScore){
+    console.log('Você ganhou! MARAVILHOSO');
+  } else if(playerScore === tableScore) {
+    console.log('EMPATOU! JOGUE NOVAMENTE') 
+  } else if (tableScore > 21){
+    console.log('A mesa estourou!');
+  } else {
+    console.log('Você perdeu, passe o dinheiro!');
+  }
+}
+
+const victoryDefeat = () => {
+  if(playerScore !== 21 && playerScore < 21) {
+    tableLogic()
+  } else if (playerScore === 21) {
+    console.log("BLACKJACK!!!");
+  } else console.log('Perdeu, já era');
+}
+
+
+const standFunc = () => {
+  victoryDefeat();
+}
+
+stdBtn.addEventListener('click', standFunc)
 startBtn.addEventListener('click', deckDraw);
 hitBtn.addEventListener('click', cardDrawPlayer);
 
 window.onload = () => {}
->>>>>>> 1b51032292129c4c3ae6397498e49b978fee4a64

@@ -1,5 +1,5 @@
 
-const tableLogic = (playerPoints, tableCardCount, tablePoints) => {
+const tableLogic = (playerPoints, tablePoints) => {
   let cardCount = tableCardCount
   if(playerPoints > tablePoints && cardCount < 5){ //precisa de uma condicional pra player stand;
     const newCardTb = deckGet(g, 1);
@@ -16,7 +16,7 @@ const scoreFunc = (cartaValor) => {
 }
 
 const somarPontos = () => {
-  
+
 }
 
 const flipCard = () => { //isso só tem na minha branch
