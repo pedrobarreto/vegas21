@@ -12,9 +12,12 @@ const deckDraw = async () => {
   const deckData = await fetchDeck.json();
   const deckid = deckData.deck_id;
   idDeck = deckid;
+  startBtn.disabled = true;
+  hitBtn.disabled = false;
+  stdBtn.disabled = false;
 
-  const t = await table(1);
-  const p = await player(2);
+  await table(1);
+  await player(2);
   
  tableScore = score(tableCards);
  playerScore = score(playerCards);
@@ -87,6 +90,9 @@ function createCustomElement(element, className) {
 const cardDrawPlayer = async () => {
   await player(1);
   playerScore = score(playerCards);
+  if (playerCards.children.length === 5) {
+    hitBtn.disabled = true;
+  }
 }
 
 const score = (quem) => {
