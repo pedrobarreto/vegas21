@@ -27,11 +27,6 @@ const deckDraw = async () => {
   
  tableScore = score(tableCards);
  playerScore = score(playerCards);
- if (playerScore > 21) {
- showMessage('Perdeu, já era', marioDiesAudio);
- } else if (playerScore === 21) {
- showMessage('BLACKJACK!!!', maravilhosoAudio);
- }
 }
 
 const deckGet = async (deckid, count) => {
@@ -144,6 +139,7 @@ const restartGame = async () => {
   await player(2);
   playerScore = score(playerCards);
   tableScore = score(tableCards);
+  playerVerify();
 }
 
 const tableLogic = async () => {
@@ -171,8 +167,7 @@ const compare = () => {
 const playerVerify = () => {
   if (playerScore > 21) {
     showMessage('Perdeu, já era', marioDiesAudio);
-  } 
-  if (playerScore === 21) {
+  } else if (playerScore === 21) {
     showMessage('BLACKJACK!!!', maravilhosoAudio);
   }
 }
