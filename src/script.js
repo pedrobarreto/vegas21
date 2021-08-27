@@ -1,5 +1,3 @@
-const { moduleExpression } = require("@babel/types");
-
 const tableCards = document.querySelector('.table-cards');
 const playerCards = document.querySelector('.player-cards');
 const startMenu = document.querySelector('.menu-start');
@@ -190,18 +188,15 @@ const playerVerify = () => {
 }
 
 stdBtn.addEventListener('click', tableLogic)
-<<<<<<< HEAD
 
 const standFunc = () => {
   victoryDefeat();
 }
 
 stdBtn.addEventListener('click', standFunc);
-=======
->>>>>>> d01abcb424c7b23df068f6c2468064fdbedf2464
 startBtn.addEventListener('click', deckDraw);
 hitBtn.addEventListener('click', cardDrawPlayer);
 
 window.onload = () => {}
 
-module.exports = { score};
+module.exports = { score };
