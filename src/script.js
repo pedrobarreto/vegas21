@@ -24,9 +24,9 @@ const deckDraw = async () => {
 
   await table(1);
   await player(2);
-  
- tableScore = score(tableCards);
- playerScore = score(playerCards);
+
+  tableScore = score(tableCards);
+  playerScore = score(playerCards);
 }
 
 const deckGet = async (deckid, count) => {
@@ -44,7 +44,7 @@ const deckGet = async (deckid, count) => {
       image,
       suit,
       value,
-      
+
     });
   })
 }
@@ -60,6 +60,10 @@ const player = async (n) => {
   const cardTb = await deckGet(idDeck, n)
   return cardTb.forEach((card) => {
     playerCards.appendChild(card)
+    TweenMax.staggerTo(".player-cards", 1, {
+      rotation: 360,
+      y: 100
+    }, 0.5);
   })
 }
 
@@ -102,16 +106,16 @@ const cardDrawPlayer = async () => {
 }
 
 const score = (quem) => {
- return Array.from(quem.children).reduce((acc, valor) => {
-  let somar = 0;
-  if (valor.firstChild.className === "JACK" || valor.firstChild.className === "QUEEN" 
-  || valor.firstChild.className === "KING") {
-    somar = 10;
-  } else if (valor.firstChild.className === 'ACE') {
-    somar = 11;
-  } else somar = parseInt(valor.firstChild.className);
-  acc += somar;
-  return acc;
+  return Array.from(quem.children).reduce((acc, valor) => {
+    let somar = 0;
+    if (valor.firstChild.className === "JACK" || valor.firstChild.className === "QUEEN" ||
+      valor.firstChild.className === "KING") {
+      somar = 10;
+    } else if (valor.firstChild.className === 'ACE') {
+      somar = 11;
+    } else somar = parseInt(valor.firstChild.className);
+    acc += somar;
+    return acc;
   }, 0);
 }
 
@@ -120,7 +124,7 @@ const showMessage = (message, audio) => {
   messageDiv.classList.add('active');
   messageContent.innerText = message;
   audio.play();
-} 
+}
 
 overlay.addEventListener('click', () => {
   overlay.classList.remove('active');
@@ -143,8 +147,8 @@ const restartGame = async () => {
 }
 
 const tableLogic = async () => {
-   for(let i = 0; i < 5; i += 1) {
-    if (playerScore >= tableScore && tableCards.children.length < 5){ //precisa de uma condicional pra player stand;
+  for (let i = 0; i < 5; i += 1) {
+    if (playerScore >= tableScore && tableCards.children.length < 5) { //precisa de uma condicional pra player stand;
       await table(1);
       tableScore = score(tableCards);
     };
@@ -153,11 +157,11 @@ const tableLogic = async () => {
 }
 
 const compare = () => {
-  if(playerScore > tableScore){
+  if (playerScore > tableScore) {
     showMessage('Você ganhou! MARAVILHOSO', maravilhosoAudio);
-  } else if(playerScore === tableScore) {
-    showMessage('EMPATOU! JOGUE NOVAMENTE', marioDiesAudio); 
-  } else if (tableScore > 21){
+  } else if (playerScore === tableScore) {
+    showMessage('EMPATOU! JOGUE NOVAMENTE', marioDiesAudio);
+  } else if (tableScore > 21) {
     showMessage('A mesa estourou!', maravilhosoAudio);
   } else {
     showMessage('Você perdeu, passe o dinheiro!', marioDiesAudio);
