@@ -1,3 +1,5 @@
+const { moduleExpression } = require("@babel/types");
+
 const tableCards = document.querySelector('.table-cards');
 const playerCards = document.querySelector('.player-cards');
 const startBtn = document.getElementById('start');
@@ -59,7 +61,6 @@ function createCards({
   image,
   suit,
   value,
-  i
 }) {
 
   const section = document.createElement('section');
@@ -115,7 +116,7 @@ const tableLogic = async () => {
   if(playerScore > tableScore){
     console.log('Você ganhou! MARAVILHOSO');
   } else if(playerScore === tableScore) {
-    console.log('EMPATOU! JOGUE NOVAMENTE') 
+    console.log('EMPATOU! JOGUE NOVAMENTE');
   } else if (tableScore > 21){
     console.log('A mesa estourou!');
   } else {
@@ -136,8 +137,10 @@ const standFunc = () => {
   victoryDefeat();
 }
 
-stdBtn.addEventListener('click', standFunc)
+stdBtn.addEventListener('click', standFunc);
 startBtn.addEventListener('click', deckDraw);
 hitBtn.addEventListener('click', cardDrawPlayer);
 
 window.onload = () => {}
+
+module.exports = { score};
