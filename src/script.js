@@ -191,50 +191,6 @@ const playerVerify = () => {
 
 stdBtn.addEventListener('click', tableLogic)
 
-
-const score = (quem) => {
- return Array.from(quem.children).reduce((acc, valor) => {
-  let somar = 0;
-  if (valor.firstChild.className === "JACK" || valor.firstChild.className === "QUEEN" 
-  || valor.firstChild.className === "KING") {
-    somar = 10;
-  } else if (valor.firstChild.className === 'ACE') {
-    somar = 11;
-  } else somar = parseInt(valor.firstChild.className);
-  acc += somar;
-  return acc;
-  }, 0);
-}
-
-const tableLogic = async () => {
-   for(let i = 0; i < 5; i += 1) {
-    if (playerScore >= tableScore && tableCards.children.length < 5){ //precisa de uma condicional pra player stand;
-      await table(1);
-      console.log(playerScore);
-      tableScore = score(tableCards);
-    };
-    
-  }
-  if(playerScore > tableScore){
-    console.log('Você ganhou! MARAVILHOSO');
-  } else if(playerScore === tableScore) {
-    console.log('EMPATOU! JOGUE NOVAMENTE');
-  } else if (tableScore > 21){
-    console.log('A mesa estourou!');
-  } else {
-    console.log('Você perdeu, passe o dinheiro!');
-  }
-}
-
-const victoryDefeat = () => {
-  if(playerScore !== 21 && playerScore < 21) {
-    tableLogic()
-  } else if (playerScore === 21) {
-    console.log("BLACKJACK!!!");
-  } else console.log('Perdeu, já era');
-}
-
-
 const standFunc = () => {
   victoryDefeat();
 }
