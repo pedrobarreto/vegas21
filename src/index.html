@@ -5,21 +5,48 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@700&display=swap" rel="stylesheet">
+
   <title>4 Leaf Clover</title>
 </head>
 <body>
+  <header>
+    <h1>BlackJack</h1>
+    <img src="logo.png"  alt="logo">
+  </header>
   <section class="container">
     <div id='table'>
     <section class="table-cards"></section>
+    <div class = 'menu-start'> 
+      <div class = 'box'> 
+    <button id="start">START</button>
+  </div>
+  </div>
   </div>
   <div id = 'player'>
     <section class="player-cards"></section>
+    <div class = 'menu'> 
+      <button id="hit" disabled="true">HIT</button>
+      <button id="stand" disabled="true">STAND</button>
+    </div>
   </div>
+  
   </section>
 
+<<<<<<< HEAD
+  <div class="message-div">
+    <div class="message-content"></div>
+  </div>
+  <div id="overlay"></div>
+=======
   <button id="start">Começar</button>
   <button id="hit">HIT</button>
   <button id="stand">STAND</button>
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2
   <script src="script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
 </body>
 </html>
