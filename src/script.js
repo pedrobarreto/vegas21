@@ -1,5 +1,6 @@
 const tableCards = document.querySelector('.table-cards');
 const playerCards = document.querySelector('.player-cards');
+<<<<<<< HEAD
 const startMenu = document.querySelector('.menu-start');
 const playerMenu = document.querySelector('.menu');
 const startBtn = document.getElementById('start');
@@ -16,11 +17,21 @@ let idDeck;
 let tableScore = 0;
 let playerScore = 0;
 
+=======
+const startBtn = document.getElementById('start');
+const hitBtn = document.getElementById('hit');
+const stdBtn = document.getElementById('stand');
+let idDeck;
+let tableScore = 0;
+let playerScore = 0;
+
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2
 const deckDraw = async () => {
   const fetchDeck = await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6')
   const deckData = await fetchDeck.json();
   const deckid = deckData.deck_id;
   idDeck = deckid;
+<<<<<<< HEAD
   startBtn.disabled = true;
   hitBtn.disabled = false;
   stdBtn.disabled = false;
@@ -32,6 +43,14 @@ const deckDraw = async () => {
 
   tableScore = score(tableCards);
   playerScore = score(playerCards);
+=======
+
+  const t = await table(1);
+  const p = await player(2);
+  
+ tableScore = score(tableCards);
+ playerScore = score(playerCards);
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2
 }
 
 const deckGet = async (deckid, count) => {
@@ -43,6 +62,7 @@ const deckGet = async (deckid, count) => {
     suit,
     value
   }) => {
+<<<<<<< HEAD
 
     return createCards({
       code,
@@ -50,6 +70,15 @@ const deckGet = async (deckid, count) => {
       suit,
       value,
 
+=======
+
+    return createCards({
+      code,
+      image,
+      suit,
+      value,
+      
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2
     });
   })
 }
@@ -65,6 +94,7 @@ const player = async (n) => {
   const cardTb = await deckGet(idDeck, n)
   return cardTb.forEach((card) => {
     playerCards.appendChild(card)
+<<<<<<< HEAD
     TweenMax.staggerTo(".player-cards", 1, {
       rotation: 360,
       y: 100
@@ -79,6 +109,19 @@ function createCards({
   value,
 }) {
 
+=======
+  })
+}
+
+function createCards({
+  code,
+  image,
+  suit,
+  value,
+  i
+}) {
+
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2
   const section = document.createElement('section');
   section.className = `card-${code}`;
   section.appendChild(createCustomElement('span', value));
@@ -104,6 +147,7 @@ function createCustomElement(element, className) {
 const cardDrawPlayer = async () => {
   await player(1);
   playerScore = score(playerCards);
+<<<<<<< HEAD
   playerVerify();
   if (playerCards.children.length === 5) {
     hitBtn.disabled = true;
@@ -188,6 +232,58 @@ const playerVerify = () => {
 }
 
 stdBtn.addEventListener('click', tableLogic)
+=======
+}
+
+const score = (quem) => {
+ return Array.from(quem.children).reduce((acc, valor) => {
+  let somar = 0;
+  if (valor.firstChild.className === "JACK" || valor.firstChild.className === "QUEEN" 
+  || valor.firstChild.className === "KING") {
+    somar = 10;
+  } else if (valor.firstChild.className === 'ACE') {
+    somar = 11;
+  } else somar = parseInt(valor.firstChild.className);
+  acc += somar;
+  return acc;
+  }, 0);
+}
+
+const tableLogic = async () => {
+   for(let i = 0; i < 5; i += 1) {
+    if (playerScore >= tableScore && tableCards.children.length < 5){ //precisa de uma condicional pra player stand;
+      await table(1);
+      console.log(playerScore);
+      tableScore = score(tableCards);
+    };
+    
+  }
+  if(playerScore > tableScore){
+    console.log('Você ganhou! MARAVILHOSO');
+  } else if(playerScore === tableScore) {
+    console.log('EMPATOU! JOGUE NOVAMENTE') 
+  } else if (tableScore > 21){
+    console.log('A mesa estourou!');
+  } else {
+    console.log('Você perdeu, passe o dinheiro!');
+  }
+}
+
+const victoryDefeat = () => {
+  if(playerScore !== 21 && playerScore < 21) {
+    tableLogic()
+  } else if (playerScore === 21) {
+    console.log("BLACKJACK!!!");
+  } else console.log('Perdeu, já era');
+}
+
+
+const standFunc = () => {
+  victoryDefeat();
+}
+
+stdBtn.addEventListener('click', standFunc)
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2
 startBtn.addEventListener('click', deckDraw);
 hitBtn.addEventListener('click', cardDrawPlayer);
 

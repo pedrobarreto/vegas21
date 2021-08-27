@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const tableCards = document.querySelector('.table-cards');
 const playerCards = document.querySelector('.player-cards');
 const startBtn = document.getElementById('start');
@@ -177,3 +178,34 @@ startBtn.addEventListener('click', deckDraw);
 hitBtn.addEventListener('click', cardDrawPlayer);
 
 window.onload = () => {}
+=======
+
+const tableLogic = (playerPoints, tablePoints) => {
+  let cardCount = tableCardCount
+  if(playerPoints > tablePoints && cardCount < 5){ //precisa de uma condicional pra player stand;
+    const newCardTb = deckGet(g, 1);
+    tableCards.appendChild(newCardTb);
+    cardCount += 1;
+  } 
+}
+
+const scoreFunc = (cartaValor) => {
+  if(cartaValor === "JACK" || cartaValor === "QUEEN" || cartaValor === "KING"){
+    return 10;
+  }
+  return parseInt(cartaValor);    
+}
+
+const somarPontos = () => {
+
+}
+
+const flipCard = () => { //isso só tem na minha branch
+  const getCard = document.getElementById('player-card');
+  getCard.addEventListener('click', (event) => {
+    event.target.style.backgroundColor = ('rgb(238, 70, 70)');
+    
+  })
+}
+
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2

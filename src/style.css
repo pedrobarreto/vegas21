@@ -106,12 +106,24 @@ section.table-cards {
 }
 
 #player {
+<<<<<<< HEAD
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-right: 20%;
     margin-left: 20%;
     flex-flow: row;
+=======
+  width: 700px;
+  height: 300px;
+  margin: 0 auto;
+  border-radius: 40px;
+  border-color: black;
+  border-style: solid;
+  padding: 48px;
+  position: relative;
+  margin-top: 50px;
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2
 }
 
 
@@ -120,6 +132,7 @@ section.table-cards {
 container {
   display: flex;
   position: relative;
+<<<<<<< HEAD
   left: 50px;
 }
 
@@ -200,6 +213,17 @@ container {
 
         
 
+=======
+  width: 600px
+}
+
+container {
+  display: flex;
+  position: relative;
+  left: 50px;
+}
+
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2
 .table-cards section:nth-child(1), .player-cards section:nth-child(1) {
   position: absolute;
   left: 0px;
@@ -225,6 +249,7 @@ container {
 .table-cards  section:nth-child(6), .player-cards section:nth-child(6) {
   position: absolute;
   left: 250px;
+<<<<<<< HEAD
 }
 
 .message-div {
@@ -310,3 +335,6 @@ img.msg__img {
   bottom:-10px;
   right: 0;
 }
+=======
+}
+>>>>>>> 3aa83f51989e0057980f731ede84537f3af399c2
