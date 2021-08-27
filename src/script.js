@@ -190,12 +190,15 @@ const playerVerify = () => {
 }
 
 stdBtn.addEventListener('click', tableLogic)
+<<<<<<< HEAD
 
 const standFunc = () => {
   victoryDefeat();
 }
 
 stdBtn.addEventListener('click', standFunc);
+=======
+>>>>>>> d01abcb424c7b23df068f6c2468064fdbedf2464
 startBtn.addEventListener('click', deckDraw);
 hitBtn.addEventListener('click', cardDrawPlayer);
 
